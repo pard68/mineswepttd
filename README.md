@@ -4,9 +4,21 @@ A RESTful Minesweeper server.
 
 ## Install
 
+If you're looking to run this off of localhost, and you want the port to be
+something other than `8000` I recommend you use the Docker image:
+
+```shell
+docker run -p 80:8000 pard68/mineswepttd
+```
+
+If you just want to run it locally -- for fun or with a frontend, you can also
+make use of the published package on Crates.io:
+
 ```shell
 cargo install mineswepttd && mineswepttd
 ```
+
+Or if copying the src and running it from that is more you speed try:
 
 ```shell
 git clone https://github.com/pard68/mineswepttd && \
@@ -53,7 +65,7 @@ The first line is made up of three integers; width, height, and difficulty
 seed for the board, a request to `/new` will return a human-friendly string,
 however any unicode string is an acceptable seed. The remaining lines are a
 series of two integer pairs, comprised of 1's and 0's. The first integer in the
-each pair refers to the reveal state for the cell. The second integere in each
+each pair refers to the reveal state for the cell. The second integer in each
 pair refers to the flag state for that cell.
 
 Flag or unflag a cell:
@@ -68,7 +80,7 @@ as the body
 
 ### Flag and Reveal Responses
 
-The `/flag` and `/reveal` endpoints reponses can be comprised of between one and
+The `/flag` and `/reveal` endpoint responses can be comprised of between one and
 three parts. The first part, which will always be returned is what the board
 looks like following a flagging or reveal. It looks like this:
 
@@ -112,8 +124,12 @@ of the response is _requested_ than this line can also be blank -- `\n`. The
 third potential part of a response is the board's state. Developers implementing
 a frontend for `mineswepttd` can choose to either keep track of the game's state
 in their own application or can request an updated state with each request. To
-request a state, send the paramete `?send_state=true` with the `/flag` or
+request a state, send the parameter `?send_state=true` with the `/flag` or
 `/reveal` request.
+
+## Front-ends
+
+None exist. Go make one. Or what until I do...
 
 ## Development
 
