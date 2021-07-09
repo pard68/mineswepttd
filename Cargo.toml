@@ -3,6 +3,10 @@ name = "mineswpttd"
 version = "0.1.0"
 authors = ["Ian Pringle <pard@0x44.pw>"]
 edition = "2018"
+repository = "https://github.com/pard68/mineswepttd/"
+license = "GPL-3.0"
+keywords = ["minesweeper", "game"]
+description = "A RESTful Minesweeper server."
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
