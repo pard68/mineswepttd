@@ -135,3 +135,10 @@ None exist. Go make one. Or what until I do...
 
 A postman config can be found in the root of this project. It contains a request
 for each of the endpoints currently available.
+
+## TODO
+
+[ ] - Testing
+[ ] - Max flags?
+[ ] - Create front-end to showcase usage
+[ ] - Break into a library and a server
