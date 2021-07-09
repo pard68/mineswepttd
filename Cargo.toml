@@ -1,5 +1,5 @@
 [package]
-name = "mineswpttd"
+name = "mineswepttd"
 version = "0.1.0"
 authors = ["Ian Pringle <pard@0x44.pw>"]
 edition = "2018"

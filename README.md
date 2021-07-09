@@ -5,6 +5,10 @@ A RESTful Minesweeper server.
 ## Install
 
 ```shell
+cargo install mineswepttd && mineswepttd
+```
+
+```shell
 git clone https://github.com/pard68/mineswepttd && \
 cd mineswepttd && \
 cargo run
