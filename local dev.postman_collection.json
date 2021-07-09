@@ -1,0 +1,225 @@
+{
+	"info": {
+		"_postman_id": "cac4eec2-2cea-46dc-ac0a-967e767c28d6",
+		"name": "local dev",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Board",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"width\", \"10\");",
+							"pm.collectionVariables.set(\"height\", \"10\");",
+							"pm.collectionVariables.set(\"difficulty\", \"10\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/new/{{width}}/{{height}}/{{difficulty}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"new",
+						"{{width}}",
+						"{{height}}",
+						"{{difficulty}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 "
+				},
+				"url": {
+					"raw": "localhost:8000/flag/{{flag_x}}/{{flag_y}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"flag",
+						"{{flag_x}}",
+						"{{flag_y}}"
+					],
+					"query": [
+						{
+							"key": "board",
+							"value": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Flag And Send State",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 "
+				},
+				"url": {
+					"raw": "localhost:8000/flag/{{flag_x}}/{{flag_y}}?send_state=true",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"flag",
+						"{{flag_x}}",
+						"{{flag_y}}"
+					],
+					"query": [
+						{
+							"key": "board",
+							"value": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n",
+							"disabled": true
+						},
+						{
+							"key": "send_state",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reveal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "10 10 10\ncurrently-lately-sound-cat\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 "
+				},
+				"url": {
+					"raw": "localhost:8000/reveal/{{reveal_x}}/{{reveal_y}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"reveal",
+						"{{reveal_x}}",
+						"{{reveal_y}}"
+					],
+					"query": [
+						{
+							"key": "board",
+							"value": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reveal And Send State",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "10 10 10\ncurrently-lately-sound-cat\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 "
+				},
+				"url": {
+					"raw": "localhost:8000/reveal/{{reveal_x}}/{{reveal_y}}?send_state=true",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"reveal",
+						"{{reveal_x}}",
+						"{{reveal_y}}"
+					],
+					"query": [
+						{
+							"key": "board",
+							"value": "10 10 10\ncurrently-lately-sound-coral\n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n00 00 00 00 00 00 00 00 00 00 \n",
+							"disabled": true
+						},
+						{
+							"key": "send_state",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "width",
+			"value": ""
+		},
+		{
+			"key": "height",
+			"value": ""
+		},
+		{
+			"key": "difficulty",
+			"value": ""
+		},
+		{
+			"key": "flag_x",
+			"value": "5"
+		},
+		{
+			"key": "flag_y",
+			"value": "5"
+		},
+		{
+			"key": "reveal_x",
+			"value": "0"
+		},
+		{
+			"key": "reveal_y",
+			"value": "0"
+		}
+	]
+}
