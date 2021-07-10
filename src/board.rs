@@ -1,16 +1,13 @@
 use petname;
 use rand;
 use rand_seeder::{Seeder, SipRng};
-use serde::Serialize;
 use std::fmt;
 
-#[derive(Debug, Clone, Copy, Serialize)]
+#[derive(Debug, Clone, Copy)]
 pub struct Cell {
-    #[serde(skip)]
     mine: bool,
     flag: bool,
     reveal: bool,
-    #[serde(skip)]
     neighbors: u8,
 }
 
@@ -66,7 +63,7 @@ impl Cell {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone)]
 pub struct Board {
     cells: Vec<Cell>,
     width: usize,
