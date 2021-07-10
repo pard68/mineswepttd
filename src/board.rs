@@ -12,19 +12,6 @@ pub struct Cell {
 }
 
 impl Cell {
-    fn new_empty() -> Cell {
-        Cell {
-            mine: false,
-            flag: false,
-            reveal: false,
-            neighbors: 0,
-        }
-    }
-
-    fn toggle_mine(&mut self) {
-        self.mine = !self.mine;
-    }
-
     fn toggle_flag(&mut self) -> bool {
         if self.reveal {
             false
@@ -41,25 +28,6 @@ impl Cell {
             self.reveal = value;
             true
         }
-    }
-
-    fn toggle_reveal(&mut self) -> bool {
-        if self.flag {
-            false
-        } else {
-            self.reveal = !self.reveal;
-            true
-        }
-    }
-
-    fn with_mine(mut self) -> Self {
-        self.mine = true;
-        self
-    }
-
-    fn with_neighbors(mut self, n: u8) -> Self {
-        self.neighbors = n;
-        self
     }
 }
 
@@ -200,23 +168,23 @@ impl Board {
     fn adjacent_cells(self, i: usize) -> Vec<usize> {
         let width = self.width.clone();
         let height = self.height.clone();
-        let mut tiles: Vec<usize> = Vec::new();
+        let cells: Vec<usize>;
         // It's longer without branching logic, but it saves time.
         if i == 0 {
             // Top left corner
-            tiles = [i + 1, i + self.height, i + 1 + self.height].to_vec();
+            cells = [i + 1, i + self.height, i + 1 + self.height].to_vec();
         } else if width - 1 == i {
             // Top right corner
-            tiles = [i - 1, i + self.height, i - 1 + self.height].to_vec();
+            cells = [i - 1, i + self.height, i - 1 + self.height].to_vec();
         } else if i == width * height - width {
             // Bottom left corner
-            tiles = [i + 1, i - self.width, i + 1 - self.width].to_vec();
+            cells = [i + 1, i - self.width, i + 1 - self.width].to_vec();
         } else if i + 1 == width * height {
             // Bottom right corner
-            tiles = [i - 1, i - self.width, i - 1 - self.width].to_vec();
+            cells = [i - 1, i - self.width, i - 1 - self.width].to_vec();
         } else if i < width {
             // Top row
-            tiles = [
+            cells = [
                 i - 1,
                 i + 1,
                 i + self.height,
@@ -226,7 +194,7 @@ impl Board {
             .to_vec();
         } else if i > width * (height - 1) {
             // Bottom row
-            tiles = [
+            cells = [
                 i - 1,
                 i + 1,
                 i - self.width,
@@ -236,7 +204,7 @@ impl Board {
             .to_vec();
         } else if i % width == 0 {
             // Left column
-            tiles = [
+            cells = [
                 i + 1,
                 i - self.width,
                 i + 1 - self.width,
@@ -246,7 +214,7 @@ impl Board {
             .to_vec();
         } else if (i + 1) % width == 0 {
             // Right column
-            tiles = [
+            cells = [
                 i - 1,
                 i - self.width,
                 i - 1 - self.width,
@@ -256,7 +224,7 @@ impl Board {
             .to_vec();
         } else {
             // Middle of board
-            tiles = [
+            cells = [
                 i - 1,
                 i + 1,
                 i - self.width,
@@ -269,7 +237,7 @@ impl Board {
             .to_vec();
         }
         // println!("{}:{:?}", i, tiles);
-        tiles
+        cells
     }
 
     pub fn flag(&mut self, x: usize, y: usize) -> bool {
@@ -302,6 +270,7 @@ impl Board {
         }
     }
 
+    #[allow(dead_code)]
     pub fn reveal_all(&mut self) -> bool {
         for i in 0..self.width * self.height {
             self.cells[i].set_reveal(true);
