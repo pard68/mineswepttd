@@ -142,4 +142,4 @@ for each of the endpoints currently available.
 [ ] - Max flags?
 [ ] - Create front-end to showcase usage
 [ ] - Break into a library and a server
-[ ] - Get docker actions working
+[X] - Get docker actions working
