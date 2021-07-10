@@ -1,6 +1,6 @@
 [package]
 name = "mineswepttd"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Ian Pringle <pard@0x44.pw>"]
 edition = "2018"
 repository = "https://github.com/pard68/mineswepttd/"
