@@ -2,6 +2,8 @@
 
 A RESTful Minesweeper server.
 
+I am hosting this service on my domain @ https://mineswepttd.0x44.pw/
+
 ## Install
 
 If you're looking to run this off of localhost, and you want the port to be
