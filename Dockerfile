@@ -15,10 +15,10 @@ WORKDIR /app
 COPY . .
 COPY --from=cacher /app/target target
 COPY --from=cacher $CARGO_HOME $CARGO_HOME
-RUN cargo build --release
+RUN cargo build --release --bin app
 
 FROM gcr.io/distroless/cc-debian10
-COPY --from=builder /src/target/release/mineswepttd /usr/local/bin/mineswepttd
+COPY --from=builder /app/target/release/app /usr/local/bin/app
 ENV ROCKET_ADDRESS=0.0.0.0
 EXPOSE 8000
-ENTRYPOINT ["mineswepttd"]
+ENTRYPOINT ["app"]
