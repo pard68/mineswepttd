@@ -296,12 +296,12 @@ impl Board {
             .enumerate()
             .map(|(i, x)| {
                 let mut c: String = String::new();
-                if !x.reveal {
+                if x.flag {
+                    c.push_str("F");
+                } else if !x.reveal {
                     c.push_str(".");
                 } else if x.mine {
                     c.push_str("M");
-                } else if x.flag {
-                    c.push_str("F");
                 } else {
                     c.push_str(&x.neighbors.to_string());
                 }
