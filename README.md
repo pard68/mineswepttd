@@ -106,6 +106,12 @@ refers to a _revealed_ cell which contains a mine -- if an `M` is on the board,
 than the game is over. Which brings us to the next potential part of the
 response; the win/lose state.
 
+A special note, on a call to `/flag` the line following the board will contain
+an integer which refers to the total number of _used_ flags. Your game can use
+this field to determine how many flags the user has left (total available flags
+is equal to the difficulty). If all flags have been used, `/flag` will merely
+return the state it was given, plus the total used flag count.
+
 ```text
 0000011100
 000001F100
@@ -141,7 +147,7 @@ for each of the endpoints currently available.
 ## TODO
 
 [ ] - Testing
-[ ] - Max flags?
-[ ] - Create front-end to showcase usage
+[X] - Max flags?
+[X] - Create front-end to showcase usage
 [ ] - Break into a library and a server
 [X] - Get docker actions working

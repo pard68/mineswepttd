@@ -240,13 +240,19 @@ impl Board {
         cells
     }
 
-    pub fn flag(&mut self, x: usize, y: usize) -> bool {
+    pub fn flag(&mut self, x: usize, y: usize) -> usize {
         let i = (y * self.width) + x;
         self.flag_by_index(i)
     }
 
-    pub fn flag_by_index(&mut self, i: usize) -> bool {
-        self.cells[i].toggle_flag()
+    pub fn flag_by_index(&mut self, i: usize) -> usize {
+        let flags = self.cells.iter().fold(0, |acc, x| acc + x.flag as usize);
+        if flags >= self.difficulty {
+            flags
+        } else {
+            self.cells[i].toggle_flag();
+            flags + 1
+        }
     }
     pub fn reveal(&mut self, x: usize, y: usize) -> bool {
         let i = (y * self.width) + x;
