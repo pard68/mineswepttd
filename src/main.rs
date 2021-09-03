@@ -14,12 +14,13 @@ fn index() -> &'static str {
     "Minesweeper!"
 }
 
-#[get("/new/<width>/<height>/<difficulty>")]
-fn new(width: usize, height: usize, difficulty: usize) -> String {
+#[get("/new/<width>/<height>/<difficulty>?<seed>")]
+fn new(width: usize, height: usize, difficulty: usize, seed: Option<String>) -> String {
     board::Board::new()
         .with_width(width)
         .with_height(height)
         .with_difficulty(difficulty)
+        .with_seed(seed.unwrap_or("".to_string()))
         .build()
         .export_state()
 }
